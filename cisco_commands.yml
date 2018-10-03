@@ -1,6 +1,6 @@
 ---
 - name: Run cisco commands
-  hosts: ios
+  hosts: DIST-SW-CIS-C3750-P18
   connection: local
   gather_facts: false
 
