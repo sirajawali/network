@@ -1,6 +1,6 @@
 ---
 - name: Configure cisco acl router
-  hosts: router
+  hosts: R1
   connection: local
   gather_facts: false
 
