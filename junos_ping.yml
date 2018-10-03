@@ -1,5 +1,5 @@
 --
-- name: Get Juniper Device Facts
+- name: Test reachability to 10.10.1.1
   hosts: R2junos
   connection: local
   gather_facts: no
@@ -7,4 +7,4 @@
   tasks:
     - name: text ping
       junos_command:
-      commands: ping 10.214.176.92
+      commands: ping 10.10.1.1
