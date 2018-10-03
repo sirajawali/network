@@ -1,0 +1,3 @@
+- name: Test reachability to 10.10.1.1 using default vrf
+  ios_ping:
+    dest: 10.10.1.1
