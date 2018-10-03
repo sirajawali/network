@@ -8,3 +8,4 @@
     - name: text ping
       junos_command:
       commands: ping 10.10.1.1
+      provider: "{{ cli }}"
