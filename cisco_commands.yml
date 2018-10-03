@@ -1,6 +1,6 @@
 ---
 - name: Run cisco commands
-  hosts: ios
+  hosts: SWPALMA
   connection: local
   gather_facts: false
 
