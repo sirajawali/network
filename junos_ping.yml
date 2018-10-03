@@ -1,0 +1,10 @@
+--
+- name: Get Juniper Device Facts
+  hosts: R2junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: text ping
+      junos_command:
+      commands: ping 10.214.176.92
