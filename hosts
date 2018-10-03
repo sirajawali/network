@@ -1,0 +1,9 @@
+[ios]
+10.10.1.5
+
+[junos]
+10.10.1.6
+
+[router:children]
+ios
+junos

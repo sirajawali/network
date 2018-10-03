@@ -1,0 +1,17 @@
+---
+- name: Run juniper commands
+  hosts: junos
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: get base information
+      junos_command:
+        commands:
+          - show version
+          - show interfaces terse
+        display: text
+      register: output
+
+    - debug: var=output.stdout_lines
