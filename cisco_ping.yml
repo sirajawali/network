@@ -3,5 +3,13 @@
   hosts: SWPALMA
   connection: local
   gather_facts: false  
-  ios_ping:
-    dest: 10.10.1.1
+  
+  tasks:
+    - name: ping
+      ios_ping:
+        dest: "{{ item }}"
+        count: 5        # default
+      with_items:
+        - 10.10.1.1
+      ignore_errors: yes
+      register: result
