@@ -1,6 +1,6 @@
 ---
 - name: Run cisco commands
-  hosts: DIST-SW-CIS-C3750-P18
+  hosts: SWPALMA
   connection: local
   gather_facts: false
 
