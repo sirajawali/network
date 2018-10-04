@@ -1,0 +1,17 @@
+---
+- name: Test reachability to 10.10.1.1
+  hosts: R2junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: text ping
+      junos_command:
+        commands:
+          - "show version"
+      register: junos_result
+
+
+    - name: Print response
+      debug:
+        var: junos_result
