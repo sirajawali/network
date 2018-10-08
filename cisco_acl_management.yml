@@ -31,11 +31,6 @@
         commands:
           - show ip access-list
       register: acl
-
-    - name: VERIFY LINE VTY CONFIG
-      ios_command:
-        commands:
-          - show run | sec line vty
     
     - name: save running to startup when modified
       ios_config:
