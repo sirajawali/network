@@ -21,6 +21,7 @@
 
     - name: APPLY ACL
       ios_config:
+        authorize: yes
         lines:
           - access-class 190 in
       presents: line vty 0 4
