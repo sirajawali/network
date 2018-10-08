@@ -12,7 +12,8 @@
           - permit ip host 52.220.152.10 any
           - permit ip host 103.6.117.25 any
           - permit ip host 103.6.117.75 any
-          - permit ip host 130.0.9.238 any
+          - permit ip host 139.0.9.238 any
+          - permit ip host 139.0.9.244 any
           - deny   ip any any log
         parents: ip access-list extended 190
         before: no ip access-list extended 190
