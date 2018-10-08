@@ -24,8 +24,20 @@
         authorize: yes
         lines:
           - access-class 190 in
-        parents: line vty 0 4    
+        parents: line vty 0 4
 
-    - name: save running to startup when modified
-      ios_config:
-        save_when: modified
+    - name: VERIFY ACL CONFIG
+      ios_command:
+        commands:
+          - show ip access-list
+        register: acl
+
+    - debug: var=acl.stdout_lines
+
+    - name: VERIFY ACL CONFIG
+      ios_command:
+        commands:
+          - show ip access-list
+      register: acl
+
+    - debug: var=acl.stdout_lines
