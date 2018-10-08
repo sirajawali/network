@@ -33,3 +33,11 @@
       register: acl
 
     - debug: var=acl.stdout_lines
+
+    - name: VERIFY LINE VTY CONFIG
+      ios_command:
+        commands:
+          - show run | sec line vty
+      register: vty
+
+    - debug: var=vty.stdout_lines
