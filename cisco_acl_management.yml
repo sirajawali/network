@@ -1,11 +1,11 @@
 ---
-- name: Configure cisco acl router
+- name: Configure cisco acl ip management router
   hosts: R1
   connection: local
   gather_facts: false
 
   tasks:
-    - name: load new acl into device
+    - name: load new acl ip management into device
       ios_config:
         lines:
           - permit tcp any any established
@@ -16,10 +16,28 @@
           - permit ip host 103.6.117.75 any
           - permit ip host 139.0.9.238 any
           - permit ip host 139.0.9.244 any
-          - deny   ip any any log
         parents: ip access-list extended 190
-        before: no ip access-list extended 190
         match: exact
+
+    - name: APPLY ACL
+      ios_config:
+        lines:
+          access-class 190 in
+      present: line vty 0 4
+
+    - name: VERIFY ACL CONFIG
+      ios_command:
+        commands:
+          - show ip access-list
+      register: acl
+    
+    - debug: var=acl.stdout_lines
+
+    - name: VERIFY LINE VTY CONFIG
+      ios_command: 
+        commands:
+          - show run | sec line vty
+      register: vty
 
     - name: save running to startup when modified
       ios_config:
