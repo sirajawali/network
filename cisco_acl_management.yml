@@ -10,7 +10,7 @@
         lines:
           - permit tcp any any established
           - permit ip host 10.10.1.1 any
-          - permit ip host 10.10.1.1 any
+          - permit ip host 10.10.2.12 any
           - permit ip host 52.220.152.10 any
           - permit ip host 103.6.117.25 any
           - permit ip host 103.6.117.75 any
