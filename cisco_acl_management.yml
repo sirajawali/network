@@ -23,7 +23,7 @@
       ios_config:
         lines:
           access-class 190 in
-      present: line vty 0 4
+      presents: line vty 0 4
 
     - name: VERIFY ACL CONFIG
       ios_command:
