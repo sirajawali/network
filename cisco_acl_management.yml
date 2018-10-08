@@ -1,0 +1,26 @@
+---
+- name: Configure cisco acl router
+  hosts: R1
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: load new acl into device
+      ios_config:
+        lines:
+          - permit tcp any any established
+          - permit ip host 52.220.152.10 any
+          - permit ip host 103.6.117.25 any
+          - permit ip host 103.6.117.75 any
+          - permit ip host 130.0.9.238 any
+          - deny   ip any any log
+        parents: ip access-list extended 190
+        before: no ip access-list extended 190
+        match: exact
+
+    - name: save running to startup when modified
+      ios_config:
+        save_when: modified
+      register: output
+
+    - debug: var=output.stdout_lines
