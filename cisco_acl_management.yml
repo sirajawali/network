@@ -32,8 +32,6 @@
           - show ip access-list
       register: acl
     
-    - debug: var=acl.stdout_lines
-
     - name: VERIFY LINE VTY CONFIG
       ios_command:
         commands:
