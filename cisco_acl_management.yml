@@ -24,7 +24,7 @@
         authorize: yes
         lines:
           - access-class 190 in
-        parents: line vty 0 4
+        parents: line vty 0 3
 
     - name: VERIFY ACL CONFIG
       ios_command:
