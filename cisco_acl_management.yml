@@ -35,10 +35,9 @@
     - debug: var=acl.stdout_lines
 
     - name: VERIFY LINE VTY CONFIG
-      ios_command: 
+      ios_command:
         commands:
           - show run | sec line vty
-      register: vty
 
     - name: save running to startup when modified
       ios_config:
