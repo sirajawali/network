@@ -30,14 +30,6 @@
       ios_command:
         commands:
           - show ip access-list
-        register: acl
-
-    - debug: var=acl.stdout_lines
-
-    - name: VERIFY ACL CONFIG
-      ios_command:
-        commands:
-          - show ip access-list
       register: acl
 
     - debug: var=acl.stdout_lines
