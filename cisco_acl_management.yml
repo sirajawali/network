@@ -16,7 +16,6 @@
           - 60 permit ip host 103.6.117.75 any
           - 70 permit ip host 139.0.9.238 any
           - 80 permit ip host 139.0.9.244 any
-          - 90 permit ip host 139.0.9.245 any
           - 100 deny   ip any any log
         parents: ['ip access-list extended 190']
         before: ['no ip access-list extended 190']
