@@ -8,17 +8,27 @@
     - name: load new acl ip management into device
       ios_config:
         lines:
-          - permit tcp any any established
-          - permit ip host 10.10.1.1 any
-          - permit ip host 10.10.2.12 any
-          - permit ip host 10.10.1.20 any
-          - permit ip host 103.6.117.25 any
-          - permit ip host 103.6.117.75 any
-          - permit ip host 139.0.9.238 any
-          - permit ip host 139.0.9.244 any
-          - deny   ip any any log
-        parents: ip access-list extended 190
+          - 10 permit tcp any any established
+          - 20 permit ip host 10.10.1.1 any
+          - 30 permit ip host 10.10.2.12 any
+          - 40 permit ip host 10.10.1.20 any
+          - 50 permit ip host 103.6.117.25 any
+          - 60 permit ip host 103.6.117.75 any
+          - 70 permit ip host 139.0.9.238 any
+          - 80 permit ip host 139.0.9.244 any
+          - 90 permit ip host 139.0.9.245 any
+          - 100 deny   ip any any log
+        parents: ['ip access-list extended 190']
+        before: ['no ip access-list extended 190']
         match: exact
+
+    - name: VERIFY ACL CONFIG
+      ios_command:
+        commands:
+          - show ip access-list 190
+      register: acl
+
+    - debug: var=acl.stdout_lines
 
     - name: APPLY ACL
       ios_config:
@@ -26,11 +36,4 @@
         lines:
           - access-class 190 in
         parents: line vty 0 4
-
-    - name: VERIFY ACL CONFIG
-      ios_command:
-        commands:
-          - show ip access-list
-      register: acl
-
-    - debug: var=acl.stdout_lines
+        match: exact
