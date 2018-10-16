@@ -14,6 +14,7 @@
           - 40 permit ip host 10.10.1.20 any
           - 50 permit ip host 103.6.117.25 any
           - 51 permit ip host 103.6.117.24 any
+          - 52 permit ip host 103.6.117.23 any
           - 60 permit ip host 103.6.117.75 any
           - 70 permit ip host 139.0.9.238 any
           - 80 permit ip host 139.0.9.244 any
